@@ -56,3 +56,4 @@ script "install_r" do
   EOH
   creates "/opt/R-3.1.0"
 end
+
