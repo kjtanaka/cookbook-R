@@ -1,6 +1,6 @@
 name             'R'
-maintainer       'YOUR_COMPANY_NAME'
-maintainer_email 'YOUR_EMAIL'
+maintainer       'FutureGrid Project, Indiana University'
+maintainer_email 'kj.tanaka@gmail.com'
 license          'Apache 2.0'
 description      'Installs/Configures R'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
