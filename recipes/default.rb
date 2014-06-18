@@ -46,7 +46,7 @@ end
 
 script "install_r" do
   interpreter "bash"
-  cwd "#{node['r']['download_dir']}/#{node['r']['version']}"
+  cwd "#{node['r']['download_dir']}/R-#{node['r']['version']}"
   code <<-EOH
   ./configure --with-x=no --install_dir=#{node['r']['install_dir']}/R-#{node['r']['version']}
   make
