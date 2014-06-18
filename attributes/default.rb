@@ -11,3 +11,4 @@ end
 
 # Path in Environment Modules
 default['r']['modulefile_dir'] = "/opt/modules-3.2.10/Modules/3.2.10/modulefiles/R"
+default['r']['modulefile_default_version'] = node['r']['version']

@@ -29,3 +29,10 @@ template "#{node['r']['modulefile_dir']}/#{node['r']['version']}" do
     :r_install_dir => node['r']['install_dir']
   )
 end
+
+template "#{node['r']['modulefile_dir']}/.version" do
+  source "dot.version.erb"
+  variables(
+    :r_default_version => node['r']['modulefile_default_version']
+  )
+end

@@ -26,7 +26,17 @@ node['r']['packages'].each do |pkg|
   end
 end
 
+directory node['r']['install_dir'] do
+  owner "root"
+  user "root"
+  mode "0644"
+  action :create
+end
+
 directory node['r']['download_dir'] do
+  owner "root"
+  user "root"
+  mode "0644"
   action :create
 end
 
