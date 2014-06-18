@@ -22,3 +22,8 @@ directory node['r']['modulefile_dir'] do
   action :create
   recursive true
 end
+
+cookbook_file "#{node['r']['modulefile_dir']}/#{node['r']['version']}" do
+  source "modulefile"
+  action :create
+end
