@@ -20,20 +20,18 @@
 
 include_recipe 'build-essential'
 
-packages = %w[wget gcc-gfortran readline readline-devel]
-
-packages.each do |pkg|
+node['r']['packages'].each do |pkg|
   package pkg do
     action :install
   end
 end
 
-directory "/root/source" do
+directory node['r']['download_dir'] do
   action :create
 end
 
-remote_file "/root/source/R-3.1.0.tar.gz" do
-  source "http://cran.cnr.berkeley.edu/src/base/R-3/R-3.1.0.tar.gz"
+remote_file "#{node['r']['download_dir']}/R-#{node['r']['version']}.tar.gz" do
+  source node['r']['download_url']
   owner "root"
   group "root"
   mode "0644"
@@ -41,19 +39,19 @@ remote_file "/root/source/R-3.1.0.tar.gz" do
 end
 
 execute "extract_tarball" do
-  cwd "/root/source"
-  command "tar zxf R-3.1.0.tar.gz"
-  creates "R-3.1.0"
+  cwd node['r']['download_dir']
+  command "tar zxf R-#{node['r']['version']}.tar.gz"
+  creates "R-#{node['r']['version']}"
 end
 
 script "install_r" do
   interpreter "bash"
-  cwd "/root/source/R-3.1.0"
+  cwd "#{node['r']['download_dir']}/#{node['r']['version']}"
   code <<-EOH
-  ./configure --with-x=no --prefix=/opt/R-3.1.0
+  ./configure --with-x=no --install_dir=#{node['r']['install_dir']}/R-#{node['r']['version']}
   make
   make install
   EOH
-  creates "/opt/R-3.1.0"
+  creates "#{node['r']['install_dir']}/R-#{node['r']['version']}"
 end
 
