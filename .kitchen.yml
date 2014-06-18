@@ -22,5 +22,6 @@ suites:
     attributes: {}
   - name: modulefile
     run_list:
+      - recipe[environment-modules::default]
       - recipe[R::modulefile]
     attributes: {}

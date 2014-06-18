@@ -23,7 +23,9 @@ directory node['r']['modulefile_dir'] do
   recursive true
 end
 
-cookbook_file "#{node['r']['modulefile_dir']}/#{node['r']['version']}" do
-  source "modulefile"
-  action :create
+template "#{node['r']['modulefile_dir']}/#{node['r']['version']}" do
+  source "modulefile.erb"
+  variables(
+    :r_install_dir => node['r']['install_dir']
+  )
 end
