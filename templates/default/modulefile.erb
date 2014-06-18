@@ -1,0 +1,35 @@
+#%Module1.0#########################################################
+proc moduleVersion { } {
+        if { ! [regexp {[^/]*$} [module-info name] ver] } {
+                puts stderr "Internal modulefile error, please send a bug report to help@futuregrid.org"
+        }
+        return $ver
+}
+set package    R
+set ver        [moduleVersion]
+set path       <%= @r_install_dir %>/$package-$ver
+
+proc ModulesHelp { } {
+   puts stderr "See $package manual for further details"
+}
+
+module-whatis   "Sets up $package in your environment"
+
+#conflict hpcc
+
+prepend-path PATH $path/bin
+#prepend-path INCLUDE $path/include
+prepend-path LD_LIBRARY_PATH $path/lib64/$package/lib
+
+if [ module-info mode load ] {
+	puts stderr "$package version $ver loaded"
+}
+
+if [ module-info mode switch2 ] {
+	puts stderr "$package version $ver loaded"
+}
+
+if [ module-info mode remove ] {
+	puts stderr "$package version $ver unloaded"
+}
+
