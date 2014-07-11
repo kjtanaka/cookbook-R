@@ -36,7 +36,7 @@ end
 directory node['r']['download_dir'] do
   owner "root"
   user "root"
-  mode "0755"
+  mode "0750"
   action :create
 end
 
