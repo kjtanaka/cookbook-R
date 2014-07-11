@@ -12,7 +12,7 @@ platforms:
     driver_config:
       box: chef/centos-6.5
       customize:
-        memory: 512
+        memory: 768
         cpuexecutioncap: 50
 
 suites:
@@ -20,8 +20,9 @@ suites:
     run_list:
       - recipe[R::default]
     attributes: {}
-  - name: modulefile
+  - name: with-module
     run_list:
+      - recipe[R::default]
       - recipe[environment-modules::default]
       - recipe[R::modulefile]
     attributes: {}

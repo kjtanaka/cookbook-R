@@ -1,5 +1,5 @@
 default['r']['install_dir'] = "/opt"
-default['r']['version'] = "3.1.0"
+default['r']['version'] = "3.1.1"
 default['r']['download_dir'] = "/root/source"
 default['r']['download_url'] = "http://cran.cnr.berkeley.edu/src/base/R-3/R-#{node['r']['version']}.tar.gz"
 
