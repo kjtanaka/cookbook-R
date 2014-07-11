@@ -18,18 +18,18 @@
 # limitations under the License.
 #
 
-directory "#{node['r']['modulefile_dir']}/R" do
+directory "#{node['r']['modulefiles_dir']}/R" do
   action :create
 end
 
-template "#{node['r']['modulefile_dir']}/R/#{node['r']['version']}" do
+template "#{node['r']['modulefiles_dir']}/R/#{node['r']['version']}" do
   source "modulefile.erb"
   variables(
     :r_install_dir => node['r']['install_dir']
   )
 end
 
-template "#{node['r']['modulefile_dir']}/R/.version" do
+template "#{node['r']['modulefiles_dir']}/R/.version" do
   source "dot.version.erb"
   variables(
     :r_default_version => node['r']['modulefile_default_version']
